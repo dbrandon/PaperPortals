@@ -1,0 +1,53 @@
+
+plugins {
+  id 'java'
+  id 'eclipse'
+  id 'io.papermc.paperweight.userdev' version '2.0.0-beta.21'
+//  id "io.paper.paperweight.userdev" version "26.2.+"
+  id "com.google.protobuf" version "0.10.0"
+}
+  
+repositories {
+  mavenCentral()
+  maven {
+    name = "papermc"
+    url = "https://repo.papermc.io/repository/maven-public/"
+  }
+//  maven {
+//    name = "papermc-repo"
+//    url = "https://papermc.io"
+//  }
+}
+
+dependencies {
+//  paperweightDevelopmentBundle("io.papermc.paper:dev-bundle:1.26.2-R0.1-SNAPSHOT")
+  paperweight.paperDevBundle("26.2.build+")
+  
+  implementation("com.google.protobuf:protobuf-java:3.25.5")
+}
+
+protobuf {
+  protoc {
+    artifact = "com.google.protobuf:protoc:3.25.5"
+  }
+}
+
+tasks {
+  compileJava {
+    dependsOn(generateProto)
+  }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+//    options.release.set(21) // Paper 1.26.2 requires Java 21+
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesNotMatching('plugin.yml') {
+        expand props
+    }
+}

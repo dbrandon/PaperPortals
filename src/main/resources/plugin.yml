@@ -1,0 +1,9 @@
+name: MCPortalPower
+version: 1.0
+main: com.netgear.tubba.mc.portalpower.PortalPowerPlugin
+api-version: "26.2"
+description: Handles portals and stuff.
+commands:
+    portpower:
+        description: Portal Power commands
+        usage: /portpower <subcommand>

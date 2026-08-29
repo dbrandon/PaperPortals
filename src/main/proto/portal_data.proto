@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package com.netgear.tubba.mc.portalpower.data;
+
+option java_multiple_files = true;
+
+message IgniterData {
+  // Bitmask values for the bonus mask
+  enum BonusMaskBits {
+    ZERO = 0;  // meaningless but required for protobuf
+    DIAMOND = 1;
+    NETHERITE = 2;
+    UNBREAKING_3 = 4;
+  }
+  optional string attuned_world = 1;
+  optional MinecraftLocation attuned_location = 2;
+  optional PortalColor attuned_color = 3;
+  optional int32 uses_remaining = 4;
+  optional bool redstone_activated = 5;
+  optional int32 bonus_mask = 6;
+}
+
+message ControlBlockData {
+  repeated MinecraftLocation portal_block = 1;
+}
+
+message PortalBlockData {
+  optional MinecraftLocation destination = 1;
+  optional PortalColor portal_color = 2;
+  optional bool portal_active = 3;
+  optional int32 ticks = 4;
+}
+
+message MinecraftLocation {
+  string world = 1;
+  int32 x = 2;
+  int32 y = 3;
+  int32 z = 4;
+  optional int32 azimuth = 5;
+}
+
+message PortalColor {
+  repeated int32 rgba = 1;
+//  optional bool prismatic = 2;
+  optional string description = 2;
+//  optional int32 rgb_history_mask = 4;
+}

@@ -1,0 +1,15 @@
+
+#portal-block-type-list:
+#  - "minecraft:nether_portal"
+#  - "minecraft:respawn_anchor"
+  
+#portal-vertical-block-type: "minecraft:nether_portal"
+#portal-horizontal-block-type: "minecraft:respawn_anchor"
+
+portal-block-type-list:
+  - "minecraft:light"
+  
+portal-vertical-block-type: "minecraft:light"
+portal-horizontal-block-type: "minecraft:light"
+
+some-other-value: 1
