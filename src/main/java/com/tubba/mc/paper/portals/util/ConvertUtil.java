@@ -1,4 +1,4 @@
-package com.netgear.tubba.mc.portalpower.util;
+package com.tubba.mc.paper.portals.util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

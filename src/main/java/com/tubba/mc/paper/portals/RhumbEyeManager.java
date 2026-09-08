@@ -1,6 +1,4 @@
-package com.netgear.tubba.mc.portalpower;
-
-import java.util.List;
+package com.tubba.mc.paper.portals;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -12,10 +10,9 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.netgear.tubba.mc.portalpower.LocationEncoder.WorldName;
+import com.tubba.mc.paper.portals.util.WorldName;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 
 public class RhumbEyeManager {
   public static String RHUMB_EYE_NAME = "Eye of Rhumb";

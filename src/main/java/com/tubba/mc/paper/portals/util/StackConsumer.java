@@ -1,4 +1,4 @@
-package com.netgear.tubba.mc.portalpower.util;
+package com.tubba.mc.paper.portals.util;
 
 import java.util.function.Consumer;
 

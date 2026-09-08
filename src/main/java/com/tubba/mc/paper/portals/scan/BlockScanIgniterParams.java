@@ -1,4 +1,4 @@
-package com.netgear.tubba.mc.portalpower.scan;
+package com.tubba.mc.paper.portals.scan;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;

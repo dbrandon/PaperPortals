@@ -1,14 +1,15 @@
-package com.netgear.tubba.mc.portalpower;
+package com.tubba.mc.paper.portals;
 
 import java.util.List;
 
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jspecify.annotations.Nullable;
+
+import com.tubba.mc.paper.portals.util.WorldName;
 
 import net.kyori.adventure.text.format.NamedTextColor;
 
@@ -47,10 +48,6 @@ public class PortalPowerPlugin extends JavaPlugin {
     igniterManager = new IgniterManager(this, rhumbEyeManager);
     portalListener = new PortalListener(this, igniterManager);
     getServer().getPluginManager().registerEvents(portalListener, this);
-//    getServer().addRecipe(linkerManager.createConcentratedEyeRecipe());
-//    
-//    GunterPortalIgniter igniter = new GunterPortalIgniter(this, igniterManager);
-//    getServer().getPluginManager().registerEvents(igniter, this);
     
     PortalPhysicsListener physicsListener = new PortalPhysicsListener(this);
     getServer().getPluginManager().registerEvents(physicsListener, this);
@@ -93,73 +90,15 @@ public class PortalPowerPlugin extends JavaPlugin {
     }
     
     
-    if(true) {
-      return true;
-    }
-    
     if(args.length == 0) {
 //      sendHelp(player);
-      return true;
-    }
-    
-    switch(args[0].toLowerCase()) {
-    case "fakeadd": {
-      if(args.length < 3) {
-        player.sendMessage("§cUsage: /radar fakeadd <name> <distance>");
-        return true;
-      }
-      
-      String name = args[1];
-      Location loc = getLocationFromDistance(player, args[2]);
-      if(loc != null) {
-//        radarTask.setFakePlayer(name, loc);
-        player.sendMessage("§aAdded fake player §f" + name + " §aat distance §f" + args[2]);
-      }
-      break;
-    }
-      
-      
-    case "fakemove": {
-      if(args.length < 3) {
-        player.sendMessage("§cUsage: /radar fakeremove <name> <distance>");
-        return true;
-      }
-      
-      String name = args[1];
-      Location loc = getLocationFromDistance(player, args[2]);
-      if(loc != null) {
-//        radarTask.setFakePlayer(name, loc);
-        player.sendMessage("§aMoved fake player §f" + name + " §ato distance §f" + args[2]);
-      }
-      break;
-    }
-      
-    case "fakelist": {
-//      List<String> nameList = radarTask.getFakePlayerNames();
-//      if(nameList.isEmpty()) {
-//        player.sendMessage("§aNo fake players created");
-//        return true;
-//      }
-//      
-//      for(String name : nameList) {
-//        player.sendMessage("§aFake player named §f" + name);
-//      }
-      break;
-    }
-      
-    case "fakeclear":
-      player.sendMessage("§aAll fake players cleared.");
-//      radarTask.clearFakePlayers();
-      break;
-      
-//    default: sendHelp(player);
     }
     
     return true;
   }
   
   private void giveToolToPlayer(Player player) {
-    ItemStack linkerTool = igniterManager.createIgniter(LocationEncoder.WorldName.OVERWORLD);
+    ItemStack linkerTool = igniterManager.createIgniter(WorldName.OVERWORLD);
     if(!player.getInventory().addItem(linkerTool).isEmpty()) {
       player.getWorld().dropItemNaturally(player.getLocation(), linkerTool);
       player.sendMessage(NamedTextColor.YELLOW + "Your inventory was full!  Linker was dropped.");
@@ -175,19 +114,6 @@ public class PortalPowerPlugin extends JavaPlugin {
       return List.of("gettool", "debugdump");
     }
     return List.of();
-//    if(args.length == 1) {
-//      return List.of("fakeadd", "fakemove", "fakeremove", "fakelist", "fakeclear")
-//          .stream()
-//          .filter(s -> s.startsWith(args[0].toLowerCase()))
-//          .collect(Collectors.toList());
-//    }
-//    if(args.length == 2 && List.of("fakemove", "fakeremove").contains(args[0].toLowerCase())) {
-//      return radarTask.getFakePlayerNames()
-//          .stream()
-//          .filter(s -> s.startsWith(args[1]))
-//          .collect(Collectors.toList());
-//    }
-//    return List.of();
   }
   
 //  private void sendHelp(Player player) {
@@ -199,17 +125,4 @@ public class PortalPowerPlugin extends JavaPlugin {
 //    player.sendMessage("§f/radar fakeclear");
 //  }
 //  
-  private Location getLocationFromDistance(Player player, String distanceStr) {
-    double distance;
-    
-    try {
-      distance = Double.parseDouble(distanceStr);
-    }
-    catch(Exception ex) {
-      player.sendMessage("§cDistance must be a number");
-      return null;
-    }
-    
-    return player.getLocation().add(player.getLocation().getDirection().multiply(distance));
-  }
 }

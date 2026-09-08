@@ -1,11 +1,10 @@
-package com.netgear.tubba.mc.portalpower;
+package com.tubba.mc.paper.portals;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 import org.bukkit.Axis;
-import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -17,9 +16,9 @@ import org.bukkit.block.data.Orientable;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.netgear.tubba.mc.portalpower.PortalRegistry.RegisteredBlockType;
 import com.netgear.tubba.mc.portalpower.data.PortalBlockData;
 import com.netgear.tubba.mc.portalpower.data.PortalColor;
+import com.tubba.mc.paper.portals.PortalRegistry.RegisteredBlockType;
 
 public class PortalFXManager extends BukkitRunnable {
   private PortalPowerPlugin plugin;

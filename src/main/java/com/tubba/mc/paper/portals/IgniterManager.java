@@ -1,4 +1,4 @@
-package com.netgear.tubba.mc.portalpower;
+package com.tubba.mc.paper.portals;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -16,13 +16,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.view.AnvilView;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.netgear.tubba.mc.portalpower.LocationEncoder.WorldName;
 import com.netgear.tubba.mc.portalpower.data.IgniterData;
-import com.netgear.tubba.mc.portalpower.data.MinecraftLocation;
 import com.netgear.tubba.mc.portalpower.data.PortalColor;
-import com.netgear.tubba.mc.portalpower.util.ConvertUtil;
-import com.netgear.tubba.mc.portalpower.util.ProtoPersistentDataType;
-import com.netgear.tubba.mc.portalpower.util.StackConsumer;
+import com.tubba.mc.paper.portals.util.ConvertUtil;
+import com.tubba.mc.paper.portals.util.ProtoPersistentDataType;
+import com.tubba.mc.paper.portals.util.StackConsumer;
+import com.tubba.mc.paper.portals.util.WorldName;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
@@ -30,9 +29,8 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 
 public class IgniterManager {
-  private final static int BIND_WORLD_COST = 1;
-  
-  private JavaPlugin plugin;
+  private PortalPowerPlugin plugin;
+  private IgniterOperationCosts opCosts;
   
   private NamespacedKey gunterKey;
   
@@ -40,8 +38,9 @@ public class IgniterManager {
   
   private ProtoPersistentDataType<IgniterData> igniterDataHandler = new ProtoPersistentDataType<IgniterData>(IgniterData.class, IgniterData.parser());
   
-  public IgniterManager(JavaPlugin plugin, RhumbEyeManager rhumbEyeManager) {
+  public IgniterManager(PortalPowerPlugin plugin, RhumbEyeManager rhumbEyeManager) {
     this.plugin = plugin;
+    this.opCosts = plugin.getPortalPluginConfig().getIgniterOperationCosts();
     this.rhumbEyeManager = rhumbEyeManager;
     this.gunterKey = new NamespacedKey(plugin, "gunter_item");
   }
@@ -125,11 +124,6 @@ public class IgniterManager {
   }
   
   private ItemAnvilBind bindDye(ItemStack dye, ItemStack igniter) {
-//    PortalColor color = getPortalColor(dye);
-//    if(color == null) {
-//      return null;
-//    }
-//    
     // Make sure the igniter item is valid and has only been world attuned but not location attuned
     IgniterData data = getIgniterData(igniter);
     if(data == null || !data.hasAttunedWorld()) {
@@ -141,26 +135,15 @@ public class IgniterManager {
       return null;
     }
 
-//    if(data.hasAttunedColor() && data.getAttunedColor().hasRgbHistoryMask())
-//      color = checkForPrismatic(color, dye.getType(), data.getAttunedColor().getRgbHistoryMask());
-    
     igniter = igniter.clone();
     data = IgniterData.newBuilder(data)
         .setAttunedColor(color)
         .build();
     setIgniterData(igniter, data, null);
     
-    return new ItemAnvilBind(igniter, BIND_WORLD_COST, StackConsumer.create(plugin, igniter));
+    return new ItemAnvilBind(igniter, opCosts.getBindToDye(), StackConsumer.create(plugin, igniter));
   }
-  
-//  private PortalColor checkForPrismatic(PortalColor color, Material dye, int mask) {
-//    return PortalColor.newBuilder(color)
-//        .setDescription("prismatic")
-//        .setPrismatic(mask == 0x07)
-//        .setRgbHistoryMask(mask)
-//        .build();
-//  }
-//    
+
   /**
    * Creates the igniter tool binding it to one of the minecraft worlds
    * @param item
@@ -176,11 +159,12 @@ public class IgniterManager {
     
     igniter = createIgniter(igniter.clone(), eyeWorld, view.getRenameText());
     
-    return new ItemAnvilBind(igniter, BIND_WORLD_COST, StackConsumer.create(plugin, item));
+    return new ItemAnvilBind(igniter, opCosts.getBindToEye(), StackConsumer.create(plugin, item));
   }
   
   private ItemAnvilBind bindToBonus(ItemStack item, ItemStack igniter, AnvilView view) {
     IgniterData data = getIgniterData(igniter);
+    int cost;
     
     if(item == null || data == null || !data.hasAttunedWorld() || data.hasAttunedLocation()) {
       return null;
@@ -189,9 +173,11 @@ public class IgniterManager {
     int mask = 0;
     if(item.getType() == Material.DIAMOND) {
       mask = IgniterData.BonusMaskBits.DIAMOND_VALUE;
+      cost = opCosts.getBindToDiamond();
     }
     else if(item.getType() == Material.NETHERITE_INGOT) {
       mask = IgniterData.BonusMaskBits.NETHERITE_VALUE;
+      cost = opCosts.getBindToNetherite();
     }
     else {
       return null;
@@ -227,7 +213,7 @@ public class IgniterManager {
     }
     
     setIgniterData(igniter, data, component);
-    return new ItemAnvilBind(igniter, BIND_WORLD_COST, StackConsumer.create(plugin, item));    
+    return new ItemAnvilBind(igniter, cost, StackConsumer.create(plugin, item));    
   }
   
   private ItemAnvilBind bindToRedstone(ItemStack item, ItemStack igniter, AnvilView view) {
@@ -253,7 +239,7 @@ public class IgniterManager {
     }
     
     setIgniterData(igniter, data, component);
-    return new ItemAnvilBind(igniter, BIND_WORLD_COST, StackConsumer.create(plugin, item));
+    return new ItemAnvilBind(igniter, opCosts.getBindToRedstone(), StackConsumer.create(plugin, item));
   }
   
   public ItemStack createIgniter(WorldName worldName) {
@@ -264,7 +250,6 @@ public class IgniterManager {
     NamedTextColor color = worldName.getDefaultColor();
     IgniterData data = IgniterData.newBuilder()
         .setAttunedWorld(worldName.getNamespacedKey().asMinimalString())
-        .setAttunedColor(addPortalColor(color, null))
         .setUsesRemaining(1)
         .build();
     
@@ -338,12 +323,15 @@ public class IgniterManager {
       return false;
     }
     
-    data = IgniterData.newBuilder(data)
-        .clearAttunedWorld()
-        .setAttunedLocation(ConvertUtil.convert(location))
-        .build();
-    
     NamedTextColor color = worldName.getDefaultColor();
+    IgniterData.Builder builder = IgniterData.newBuilder(data)
+        .clearAttunedWorld()
+        .setAttunedLocation(ConvertUtil.convert(location));
+    
+    if(!data.hasAttunedColor()) {
+      builder.setAttunedColor(addPortalColor(color, null));
+    }
+    
     String name = worldName.getFriendlyName() + "-attuned Gunter's Igniter";
     Component nameComponent = igniter.getItemMeta().displayName();
     if(nameComponent != null) {
@@ -356,7 +344,7 @@ public class IgniterManager {
       }
     }
     
-    setIgniterData(igniter, data, Component.text(name, color));
+    setIgniterData(igniter, builder.build(), Component.text(name, color));
     
     return true;
   }

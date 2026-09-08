@@ -1,4 +1,4 @@
-package com.netgear.tubba.mc.portalpower;
+package com.tubba.mc.paper.portals;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.bukkit.Axis;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -33,11 +32,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.netgear.tubba.mc.portalpower.data.ControlBlockData;
 import com.netgear.tubba.mc.portalpower.data.IgniterData;
 import com.netgear.tubba.mc.portalpower.data.PortalBlockData;
-import com.netgear.tubba.mc.portalpower.scan.BlockScanSet;
-import com.netgear.tubba.mc.portalpower.scan.FloodFillScanner;
-import com.netgear.tubba.mc.portalpower.util.BlockInteractionTest;
-import com.netgear.tubba.mc.portalpower.util.ConvertUtil;
-import com.netgear.tubba.mc.portalpower.util.StackConsumer;
+import com.tubba.mc.paper.portals.scan.BlockScanSet;
+import com.tubba.mc.paper.portals.scan.FloodFillScanner;
+import com.tubba.mc.paper.portals.util.BlockInteractionTest;
+import com.tubba.mc.paper.portals.util.ConvertUtil;
+import com.tubba.mc.paper.portals.util.StackConsumer;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;

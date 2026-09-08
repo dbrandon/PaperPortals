@@ -1,7 +1,6 @@
-package com.netgear.tubba.mc.portalpower;
+package com.tubba.mc.paper.portals;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,8 +15,9 @@ import org.bukkit.persistence.PersistentDataContainer;
 
 import com.netgear.tubba.mc.portalpower.data.ControlBlockData;
 import com.netgear.tubba.mc.portalpower.data.PortalBlockData;
-import com.netgear.tubba.mc.portalpower.util.ConvertUtil;
-import com.netgear.tubba.mc.portalpower.util.ProtoPersistentDataType;
+import com.tubba.mc.paper.portals.util.ConvertUtil;
+import com.tubba.mc.paper.portals.util.LocationEncoder;
+import com.tubba.mc.paper.portals.util.ProtoPersistentDataType;
 
 public class PortalRegistry {
   public enum RegisteredBlockType {

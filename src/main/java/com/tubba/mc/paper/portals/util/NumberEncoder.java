@@ -1,4 +1,4 @@
-package com.netgear.tubba.mc.portalpower;
+package com.tubba.mc.paper.portals.util;
 
 public class NumberEncoder {
   public final static String SEP = "/";

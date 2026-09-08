@@ -1,4 +1,4 @@
-package com.netgear.tubba.mc.portalpower;
+package com.tubba.mc.paper.portals;
 
 import java.util.ArrayList;
 import java.util.List;

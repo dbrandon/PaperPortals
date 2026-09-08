@@ -1,4 +1,4 @@
-package com.netgear.tubba.mc.portalpower;
+package com.tubba.mc.paper.portals;
 
 import java.util.HashSet;
 import java.util.List;
@@ -16,8 +16,17 @@ public class PortalPluginConfig {
   private Material portalHorizontalBlockType;
   private Material portalVerticalBlockType;
   
+  private IgniterOperationCosts igniterOperationCosts;
+  
   public PortalPluginConfig(PortalPowerPlugin plugin) {
     this.plugin = plugin;
+  }
+  
+  public IgniterOperationCosts getIgniterOperationCosts() {
+    if(igniterOperationCosts == null) {
+      igniterOperationCosts = IgniterOperationCosts.load(plugin.getConfig());
+    }
+    return igniterOperationCosts;
   }
   
   public Set<Material> getPortalMaterialSet() {

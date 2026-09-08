@@ -1,4 +1,4 @@
-package com.netgear.tubba.mc.portalpower.util;
+package com.tubba.mc.paper.portals.util;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;

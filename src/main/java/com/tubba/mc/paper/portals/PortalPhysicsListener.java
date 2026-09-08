@@ -1,4 +1,4 @@
-package com.netgear.tubba.mc.portalpower;
+package com.tubba.mc.paper.portals;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -18,8 +18,8 @@ import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import com.netgear.tubba.mc.portalpower.data.ControlBlockData;
-import com.netgear.tubba.mc.portalpower.scan.BlockScanSet;
-import com.netgear.tubba.mc.portalpower.scan.FloodFillScanner;
+import com.tubba.mc.paper.portals.scan.BlockScanSet;
+import com.tubba.mc.paper.portals.scan.FloodFillScanner;
 
 public class PortalPhysicsListener implements Listener {
   private PortalPowerPlugin plugin;

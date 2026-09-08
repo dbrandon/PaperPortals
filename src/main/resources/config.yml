@@ -12,4 +12,9 @@ portal-block-type-list:
 portal-vertical-block-type: "minecraft:light"
 portal-horizontal-block-type: "minecraft:light"
 
-some-other-value: 1
+igniter-operation-costs:
+    bind-to-eye: 2
+    bind-to-dye: 2
+    bind-to-diamond: 5
+    bind-to-netherite: 15
+    bind-to-redstone: 10
