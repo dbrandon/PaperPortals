@@ -3,6 +3,8 @@ version: "26.2"
 main: com.tubba.mc.paper.portals.PortalPowerPlugin
 api-version: "26.2"
 description: Handles portals and stuff.
+libraries:
+  - com.google.protobuf:protobuf-java:3.25.5
 commands:
     portpower:
         permission: portpower.command.use
