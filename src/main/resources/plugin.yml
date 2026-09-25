@@ -5,5 +5,11 @@ api-version: "26.2"
 description: Handles portals and stuff.
 commands:
     portpower:
+        permission: portpower.command.use
+        permission-message: "You do not have permission to run this"
         description: Paper Portal Power commands
         usage: /paperport <subcommand>
+permissions:
+    portpower.command.use:
+        description: "Allows use of /portpower"
+        default: op

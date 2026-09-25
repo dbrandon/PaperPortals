@@ -1,7 +1,9 @@
 package com.tubba.mc.paper.portals;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -11,9 +13,12 @@ import org.jspecify.annotations.Nullable;
 
 import com.tubba.mc.paper.portals.util.WorldName;
 
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 
 public class PortalPowerPlugin extends JavaPlugin {
+  private final static String GETTOOL_COMMAND = "gettool";
+  
   private PortalListener portalListener;
   private PortalPluginConfig portalPluginConfig;
   private PortalRegistry portalRegistry;
@@ -60,7 +65,6 @@ public class PortalPowerPlugin extends JavaPlugin {
   
   @Override
   public void onDisable() {
-    // cleanup boss bar upon unload
   }
   
   @Override
@@ -69,9 +73,7 @@ public class PortalPowerPlugin extends JavaPlugin {
       sender.sendMessage("§cThis command must be run as a player.");
       return true;
     }
-    
-    Player player = (Player)sender;
-    
+        
     getLogger().warning("Command: " + command.getName() + "; label=[" + label + "] #args=" + args.length);
     
     if(args.length == 0) {
@@ -80,8 +82,13 @@ public class PortalPowerPlugin extends JavaPlugin {
     }
     
     switch(args[0].toLowerCase()) {
-    case "gettool":
-      giveToolToPlayer(player);
+    case GETTOOL_COMMAND:
+      if(args.length != 3) {
+        sender.sendMessage("Missing arguments");
+        return true;
+      }
+      
+      giveToolToPlayer(sender, args[1], args[2]);
       return true;
       
     case "debugdump": 
@@ -89,40 +96,49 @@ public class PortalPowerPlugin extends JavaPlugin {
       return true;
     }
     
-    
-    if(args.length == 0) {
-//      sendHelp(player);
-    }
-    
     return true;
   }
   
-  private void giveToolToPlayer(Player player) {
-    ItemStack linkerTool = igniterManager.createIgniter(WorldName.OVERWORLD);
+  private void giveToolToPlayer(CommandSender sender, String worldRef, String playerRef) {
+    WorldName world = WorldName.lookup(worldRef);
+    Player player = Bukkit.getPlayerExact(playerRef);
+    
+    if(world == null) {
+      sender.sendMessage("Unknown world name");
+      return;
+    }
+    if(player == null) {
+      sender.sendMessage("Player was not found");
+      return;
+    }
+    
+    ItemStack linkerTool = igniterManager.createIgniter(world);//WorldName.OVERWORLD);
     if(!player.getInventory().addItem(linkerTool).isEmpty()) {
       player.getWorld().dropItemNaturally(player.getLocation(), linkerTool);
-      player.sendMessage(NamedTextColor.YELLOW + "Your inventory was full!  Linker was dropped.");
+      player.sendMessage(Component.text("Someone tried to send you a portal igniter but your inventory was full and the item was dropped.", NamedTextColor.YELLOW));
     }
     else {
-      player.sendMessage(NamedTextColor.GREEN + "Your have been given a thingy!");
+      player.sendMessage(Component.text("You have received a gunter portal igniter", NamedTextColor.GREEN));
     }
   }
   
   @Override
   public @Nullable List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+    getLogger().warning("ARGS length=" + args.length);
     if(args.length == 1) {
-      return List.of("gettool", "debugdump");
+      return List.of(GETTOOL_COMMAND, "debugdump");
     }
+    if(args[0].equals(GETTOOL_COMMAND)) {
+      if(args.length == 2) {
+        return List.of(WorldName.OVERWORLD.getNamespacedKey().asString(),
+            WorldName.NETHER.getNamespacedKey().asString(),
+            WorldName.END.getNamespacedKey().asString());
+      }
+      if(args.length == 3) {
+        return Bukkit.getOnlinePlayers().stream().map(Player::getName).collect(Collectors.toList());
+      }
+    }
+  
     return List.of();
   }
-  
-//  private void sendHelp(Player player) {
-//    player.sendMessage("§e--- Radar Debug commands ---");
-//    player.sendMessage("§f/radar fakeadd <name> <distance>");
-//    player.sendMessage("§f/radar fakemove <name> <distance.");
-//    player.sendMessage("§f/radar fakeremove <name>");
-//    player.sendMessage("§f/radar fakelist");
-//    player.sendMessage("§f/radar fakeclear");
-//  }
-//  
 }

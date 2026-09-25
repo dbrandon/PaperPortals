@@ -41,6 +41,9 @@ public enum WorldName {
   }
   
   public static WorldName lookup(String name) {
+    if(name.startsWith("minecraft:") && name.length() > 10) {
+      name = name.substring(10);
+    }
     return lookup(NamespacedKey.minecraft(name));
   }
 }

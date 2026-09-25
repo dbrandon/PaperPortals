@@ -14,7 +14,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.view.AnvilView;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import com.netgear.tubba.mc.portalpower.data.IgniterData;
 import com.netgear.tubba.mc.portalpower.data.PortalColor;
@@ -257,7 +256,7 @@ public class IgniterManager {
     if(customName != null && !customName.equals("")) {
       name = customName;
     }
-    Bukkit.getServer().getLogger().warning("create igniter, name=" + name + "; customname=[" + customName + "]");
+
     setIgniterData(igniter, data, Component.text(name, color));
     
     return igniter;
@@ -267,12 +266,10 @@ public class IgniterManager {
     List<TextComponent> list = new ArrayList<>();
     
     if(data.hasAttunedWorld()) {
-//      list.add(Component.text("Enchanted igniter that can be attuned to a unique location within " + data.getAttunedWorld(), NamedTextColor.GRAY));
       list.add(Component.text("Unbound", NamedTextColor.RED));
     }
     else if(data.hasAttunedLocation()) {
       Location location = ConvertUtil.convert(data.getAttunedLocation());
-//      list.add(Component.text("Enchanted igniter that contains an attuned location", NamedTextColor.GRAY));
       list.add(Component.text("Igniter is attuned to ", NamedTextColor.GRAY)
               .append(Component.text("[" + location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ() + "]", NamedTextColor.RED))
               );

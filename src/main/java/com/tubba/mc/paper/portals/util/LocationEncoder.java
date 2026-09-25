@@ -5,11 +5,8 @@ import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-
-import net.kyori.adventure.text.format.NamedTextColor;
 
 public class LocationEncoder extends NumberEncoder {
   private final static Pattern LOC_PARSER = Pattern.compile("([^/]*)/([^/]*)/([^/]+)/(.+)");
