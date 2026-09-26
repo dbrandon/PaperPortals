@@ -56,9 +56,10 @@ public class PortalPowerPlugin extends JavaPlugin {
     
     PortalPhysicsListener physicsListener = new PortalPhysicsListener(this);
     getServer().getPluginManager().registerEvents(physicsListener, this);
-    
-    NetherPortalBlockListener blockListener = new NetherPortalBlockListener(this);
-    getServer().getPluginManager().registerEvents(blockListener, this);
+
+    // Not currently using this and there are reports this breaks things :(
+//    NetherPortalBlockListener blockListener = new NetherPortalBlockListener(this);
+//    getServer().getPluginManager().registerEvents(blockListener, this);
     
     new PortalFXManager(this).runTaskTimer(this, 0L, 6L);
   }
