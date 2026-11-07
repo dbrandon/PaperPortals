@@ -35,20 +35,24 @@ The Eye of Rhumb tells your portal which dimension it leads to. Surround a block
 with eight Eyes of Ender on a crafting table:
 
 <p align="center">
-  <img src="docs/images/eye-recipe.svg" alt="Crafting grid: eight Eyes of Ender around a center block. Grass Block makes an Overworld eye, Netherrack a Nether eye, End Stone an End eye" width="640">
+  <img src="docs/images/eye-recipe.svg" alt="Crafting grid: eight Eyes of Ender around a center block. Grass Block makes an Overworld eye, Netherrack a Nether eye, End Stone an End eye">
 </p>
 
-| Center block | You get                    | Your portal can lead to… |
-| ------------ | -------------------------- | ------------------------ |
-| Grass Block  | Eye of Rhumb (Overworld)   | somewhere in the Overworld |
-| Netherrack   | Eye of Rhumb (Nether)      | somewhere in the Nether  |
-| End Stone    | Eye of Rhumb's End         | somewhere in the End     |
+|   | Center block | You get                  | Your portal can lead to…   |
+| - | ------------ | ------------------------ | -------------------------- |
+| <img src="docs/images/items/grass_block.svg" width="32" alt="Grass Block"> | Grass Block  | Overworld Eye of Rhumb   | somewhere in the Overworld |
+| <img src="docs/images/items/netherrack.svg" width="32" alt="Netherrack"> | Netherrack   | Nether Eye of Rhumb      | somewhere in the Nether    |
+| <img src="docs/images/items/end_stone.svg" width="32" alt="End Stone"> | End Stone    | Eye of Rhumb's End       | somewhere in the End       |
 
 ### 2. Make a Gunter's Igniter
 
 At an **anvil**, put a **Flint and Steel** in the left slot and your **Eye of Rhumb** in the right
 slot. The result is a glowing *Gunter's Igniter* attuned to that dimension. You can rename it in the
 anvil while you're there.
+
+<p align="center">
+  <img src="docs/images/anvil.svg" alt="Anvil: Flint and Steel plus an Eye of Rhumb makes a Gunter's Igniter, which shows as Unbound with 1 ignite remaining">
+</p>
 
 > 💡 Costs **2 levels** by default.
 
@@ -57,17 +61,19 @@ anvil while you're there.
 Before you set a destination, you can upgrade the igniter at the anvil again. Put the igniter on the
 left and one of these on the right:
 
-| Add…               | What it does                                             | Default cost |
-| ------------------ | -------------------------------------------------------- | ------------ |
-| 💎 Diamond          | Igniter lights **10** portals instead of 1               | 5 levels     |
-| ⬛ Netherite Ingot  | Igniter lights **50** portals (can follow a diamond)     | 15 levels    |
-| 🎨 Any dye          | Tints the portal (add several for a multi-hued portal)   | 2 levels     |
-| 🟥 Block of Redstone | Makes the portal redstone-controlled *(experimental)*   | 10 levels    |
+|   | Add…              | What it does                                           | Default cost |
+| - | ----------------- | ------------------------------------------------------ | ------------ |
+| <img src="docs/images/items/diamond.svg" width="32" alt="Diamond"> | Diamond           | Igniter lights **10** portals instead of 1             | 5 levels     |
+| <img src="docs/images/items/netherite_ingot.svg" width="32" alt="Netherite Ingot"> | Netherite Ingot   | Igniter lights **50** portals (can follow a diamond)   | 15 levels    |
+| <img src="docs/images/items/dye.svg" width="32" alt="Dye"> | Any dye           | Tints the portal (add several for a multi-hued portal) | 2 levels     |
+| <img src="docs/images/items/redstone_block.svg" width="32" alt="Block of Redstone"> | Block of Redstone | Makes the portal redstone-controlled *(experimental)*  | 10 levels    |
 
 > ⚠️ **Upgrade first!** Once you set a destination in the next step, the igniter is locked and
 > can't be upgraded any more.
 
 ### 4. Set the destination
+
+<img src="docs/images/items/cartography_table.svg" width="32" alt="Cartography Table">
 
 Go to where you want the portal to **lead**. It has to be in the dimension the igniter is attuned to.
 Place a **Cartography Table** there and **right-click it with the igniter**.
@@ -81,7 +87,7 @@ Back home, build a closed frame out of **any solid blocks**. **Right-click the i
 frame** with the igniter and the opening fills with a portal.
 
 <p align="center">
-  <img src="docs/images/portal-frames.svg" alt="A standing portal frame you walk through after a short wait, and a flat floor portal that teleports instantly" width="760">
+  <img src="docs/images/portal-frames.svg" alt="A standing stone-brick portal frame and a flat floor portal, both filled with a swirling purple portal">
 </p>
 
 - **Standing portals** (vertical) work like a nether portal: stand in one for about 2.5 seconds.
@@ -182,6 +188,16 @@ Everything lives under `src/main/java/com/tubba/mc/paper/portals/`:
 Item and block state is stored as protobuf messages in Bukkit's `PersistentDataContainer`. If you
 change `portal_data.proto`, add new fields instead of renumbering existing ones, so portals and
 igniters already in players' worlds keep working.
+
+### Updating the README graphics
+
+The pictures in `docs/images/` are original pixel art in a Minecraft style, made by
+`docs/images/generate.py` (Python 3, no dependencies). They don't use any Mojang textures. To change
+one, edit the script and run:
+
+```bash
+python3 docs/images/generate.py
+```
 
 ### Sending a change
 
