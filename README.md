@@ -2,9 +2,10 @@
 
 **Build your own portals in survival, and send them anywhere you like.**
 
-Paper Portals is a plugin for [Paper](https://papermc.io/) Minecraft servers. It adds portals you
-can build yourself that take you to an exact spot of your choosing, in any dimension. No coordinate
-math, and they never link up with vanilla nether portals.
+Paper Portals is a plugin for [Paper](https://papermc.io/) Minecraft servers that lets players
+build their own portals in survival. Choose a destination anywhere in the Overworld, Nether or End,
+then build portals that take you straight there from any dimension. There are no coordinates to
+calculate, and vanilla nether portals keep working as normal.
 
 <p align="center">
   <img src="docs/images/journey.svg" alt="Craft an Eye of Rhumb, make an igniter at an anvil, mark the destination with a cartography table, then light a portal frame anywhere" width="100%">
@@ -48,7 +49,7 @@ that lead there.
 > - **Portals are one-way.** A portal sends you to the marked spot, but nothing brings you back. For
 >   a round trip, make **two igniters** and build a portal at each end.
 > - **A basic igniter lights only one portal**, then it breaks. Add a diamond (10 portals) or
->   netherite (50 portals) at the anvil to light more.
+>   netherite (50 portals) at the anvil to add durability.
 > - **Upgrade before you mark the destination.** Once an igniter has a destination it can't be
 >   changed or upgraded.
 > - **Mark the destination in the right dimension.** A Nether igniter only works on a cartography

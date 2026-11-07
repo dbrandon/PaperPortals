@@ -552,12 +552,12 @@ def make_items():
 
 
 def make_journey():
-    tile_w, tile_h, gap = 76, 92, 22
+    tile_w, tile_h, gap = 76, 100, 22
     steps = [
         ("Craft an Eye", ["Center block picks", "where it leads"]),
         ("Make Igniter", ["Anvil: Flint and", "Steel + the Eye"]),
-        ("Mark the Exit", ["Cartography table", "where you arrive"]),
-        ("Light it!", ["Build a frame", "anywhere you like"]),
+        ("Mark the Exit", ["Place a cartography", "table where you", "want to arrive."]),
+        ("Light it!", ["Build the entrance", "portal anywhere", "you like."]),
     ]
     portal_svg, portal_box = standing_portal(4, 5)
     icons = [
