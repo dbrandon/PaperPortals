@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 230" width="900" height="230" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <title>The four steps to a PaperPortals gateway</title>
+  <rect width="900" height="230" rx="16" fill="#1e1b2e"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+
+  <!-- connectors -->
+  <g stroke="#a78bfa" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <line x1="196" y1="95" x2="236" y2="95"/>
+    <line x1="421" y1="95" x2="461" y2="95"/>
+    <line x1="646" y1="95" x2="686" y2="95"/>
+  </g>
+
+  <!-- 1: craft eye -->
+  <g transform="translate(26,30)">
+    <rect width="170" height="130" rx="12" fill="#2d2945" stroke="#4c4470"/>
+    <circle cx="85" cy="55" r="26" fill="#1f6f5c"/>
+    <circle cx="85" cy="55" r="15" fill="#3fd1a6"/>
+    <circle cx="85" cy="55" r="6" fill="#0b2b23"/>
+    <text x="85" y="108" text-anchor="middle" fill="#f5f3ff" font-size="15" font-weight="600">Craft an Eye</text>
+  </g>
+  <text x="111" y="190" text-anchor="middle" fill="#c4b5fd" font-size="13">8 Eyes of Ender +</text>
+  <text x="111" y="208" text-anchor="middle" fill="#c4b5fd" font-size="13">a dimension block</text>
+
+  <!-- 2: anvil -->
+  <g transform="translate(251,30)">
+    <rect width="170" height="130" rx="12" fill="#2d2945" stroke="#4c4470"/>
+    <path d="M45 40 h80 v12 h-18 l-8 14 h-28 l-8 -14 h-18 z" fill="#8b8fa3"/>
+    <rect x="70" y="66" width="30" height="10" fill="#6b6f82"/>
+    <rect x="55" y="76" width="60" height="10" rx="2" fill="#8b8fa3"/>
+    <text x="85" y="108" text-anchor="middle" fill="#f5f3ff" font-size="15" font-weight="600">Make an Igniter</text>
+  </g>
+  <text x="336" y="190" text-anchor="middle" fill="#c4b5fd" font-size="13">Anvil: Flint and Steel +</text>
+  <text x="336" y="208" text-anchor="middle" fill="#c4b5fd" font-size="13">Eye (+ optional upgrades)</text>
+
+  <!-- 3: cartography table -->
+  <g transform="translate(476,30)">
+    <rect width="170" height="130" rx="12" fill="#2d2945" stroke="#4c4470"/>
+    <rect x="55" y="30" width="60" height="50" rx="3" fill="#7a5230"/>
+    <rect x="61" y="34" width="48" height="20" fill="#e8dcc0"/>
+    <path d="M64 48 l10 -8 l10 6 l10 -9 l12 7" stroke="#7a5230" stroke-width="2" fill="none"/>
+    <rect x="58" y="80" width="6" height="8" fill="#5a3b20"/>
+    <rect x="106" y="80" width="6" height="8" fill="#5a3b20"/>
+    <text x="85" y="108" text-anchor="middle" fill="#f5f3ff" font-size="15" font-weight="600">Set Destination</text>
+  </g>
+  <text x="561" y="190" text-anchor="middle" fill="#c4b5fd" font-size="13">Right-click a</text>
+  <text x="561" y="208" text-anchor="middle" fill="#c4b5fd" font-size="13">cartography table</text>
+
+  <!-- 4: portal -->
+  <g transform="translate(701,30)">
+    <rect width="170" height="130" rx="12" fill="#2d2945" stroke="#4c4470"/>
+    <rect x="55" y="22" width="60" height="70" fill="#3b3b4a"/>
+    <rect x="65" y="32" width="40" height="50" fill="#a855f7" opacity="0.85"/>
+    <path d="M72 40 q10 8 0 16 q-10 8 0 16" stroke="#f0abfc" stroke-width="2" fill="none"/>
+    <path d="M92 38 q10 8 0 16 q-10 8 0 16" stroke="#f0abfc" stroke-width="2" fill="none"/>
+    <text x="85" y="108" text-anchor="middle" fill="#f5f3ff" font-size="15" font-weight="600">Light &amp; Travel</text>
+  </g>
+  <text x="786" y="190" text-anchor="middle" fill="#c4b5fd" font-size="13">Right-click inside</text>
+  <text x="786" y="208" text-anchor="middle" fill="#c4b5fd" font-size="13">any closed frame</text>
+</svg>

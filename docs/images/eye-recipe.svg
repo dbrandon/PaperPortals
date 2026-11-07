@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Eye of Rhumb crafting recipe</title>
+  <rect width="640" height="260" rx="16" fill="#1e1b2e"/>
+  <defs>
+    <g id="eye">
+      <circle cx="24" cy="24" r="15" fill="#1f6f5c"/>
+      <circle cx="24" cy="24" r="9" fill="#3fd1a6"/>
+      <circle cx="24" cy="24" r="4" fill="#0b2b23"/>
+    </g>
+    <g id="slot"><rect width="48" height="48" fill="#8b8b8b" stroke="#373737" stroke-width="2"/></g>
+  </defs>
+
+  <!-- crafting grid -->
+  <g transform="translate(30,42)">
+    <rect x="-8" y="-8" width="176" height="176" rx="6" fill="#c6c6c6"/>
+    <g>
+      <use href="#slot" x="0" y="0"/><use href="#eye" x="0" y="0"/>
+      <use href="#slot" x="56" y="0"/><use href="#eye" x="56" y="0"/>
+      <use href="#slot" x="112" y="0"/><use href="#eye" x="112" y="0"/>
+      <use href="#slot" x="0" y="56"/><use href="#eye" x="0" y="56"/>
+      <use href="#slot" x="56" y="56"/>
+      <text x="80" y="88" text-anchor="middle" font-size="26" font-weight="700" fill="#fde047" stroke="#373737" stroke-width="1">?</text>
+      <use href="#slot" x="112" y="56"/><use href="#eye" x="112" y="56"/>
+      <use href="#slot" x="0" y="112"/><use href="#eye" x="0" y="112"/>
+      <use href="#slot" x="56" y="112"/><use href="#eye" x="56" y="112"/>
+      <use href="#slot" x="112" y="112"/><use href="#eye" x="112" y="112"/>
+    </g>
+  </g>
+
+  <path d="M222 130 h40 l-10 -10 m10 10 l-10 10" stroke="#f5f3ff" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- legend for the center block -->
+  <text x="290" y="48" fill="#f5f3ff" font-size="16" font-weight="600">Put one of these in the middle:</text>
+
+  <g transform="translate(290,68)">
+    <rect width="40" height="40" fill="#7c5a3a"/><rect width="40" height="12" fill="#5fae3a"/>
+    <text x="54" y="18" fill="#f5f3ff" font-size="15" font-weight="600">Grass Block</text>
+    <text x="54" y="36" fill="#86efac" font-size="13">→ Eye of Rhumb (Overworld)</text>
+  </g>
+  <g transform="translate(290,124)">
+    <rect width="40" height="40" fill="#7a2e2e"/>
+    <rect x="6" y="8" width="10" height="6" fill="#a34343"/><rect x="22" y="22" width="12" height="6" fill="#a34343"/>
+    <text x="54" y="18" fill="#f5f3ff" font-size="15" font-weight="600">Netherrack</text>
+    <text x="54" y="36" fill="#d8b4fe" font-size="13">→ Eye of Rhumb (Nether)</text>
+  </g>
+  <g transform="translate(290,180)">
+    <rect width="40" height="40" fill="#dfe0a6"/>
+    <rect x="8" y="10" width="8" height="8" fill="#c7c88a"/><rect x="24" y="24" width="10" height="8" fill="#c7c88a"/>
+    <text x="54" y="18" fill="#f5f3ff" font-size="15" font-weight="600">End Stone</text>
+    <text x="54" y="36" fill="#fcd34d" font-size="13">→ Eye of Rhumb's End</text>
+  </g>
+</svg>
