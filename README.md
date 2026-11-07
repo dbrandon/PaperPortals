@@ -1,11 +1,13 @@
 # Paper Portals
 
-**Build your own portals in survival, and send them anywhere you like.**
+**Portals that take you to the exact spot you choose, in any dimension.**
 
-Paper Portals is a plugin for [Paper](https://papermc.io/) Minecraft servers that lets players
-build their own portals in survival. Choose a destination anywhere in the Overworld, Nether or End,
-then build portals that take you straight there from any dimension. There are no coordinates to
-calculate, and vanilla nether portals keep working as normal.
+In vanilla Minecraft you don't choose where a portal goes: nether portals link up by coordinate
+math, and End portals always go to the same place. Paper Portals is a plugin for
+[Paper](https://papermc.io/) servers that adds portals you aim yourself. Mark a spot anywhere in the
+Overworld, Nether or End, then build an entrance anywhere else, in any dimension. Frames can be made
+of any solid block, in any shape, standing up or flat on the floor. Vanilla portals keep working as
+normal.
 
 <p align="center">
   <img src="docs/images/journey.svg" alt="Craft an Eye of Rhumb, make an igniter at an anvil, mark the destination with a cartography table, then light a portal frame anywhere" width="100%">
