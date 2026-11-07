@@ -2,108 +2,180 @@
 
 **Build your own portals in survival, and send them anywhere you like.**
 
-Paper Portals is a plugin for [Paper](https://papermc.io/) Minecraft servers. Players craft a special
-igniter, attune it to a spot in the world, then light any frame they build. Walk through and you
-arrive right where the igniter was attuned. No coordinate math and no surprise links to a vanilla
-nether portal.
+Paper Portals is a plugin for [Paper](https://papermc.io/) Minecraft servers. It adds portals you
+can build yourself that take you to an exact spot of your choosing, in any dimension. No coordinate
+math, and they never link up with vanilla nether portals.
 
 <p align="center">
-  <img src="docs/images/journey.svg" alt="Craft an Eye of Rhumb, make an igniter at an anvil, set the destination at a cartography table, then light a portal frame" width="100%">
+  <img src="docs/images/journey.svg" alt="Craft an Eye of Rhumb, make an igniter at an anvil, mark the destination with a cartography table, then light a portal frame anywhere" width="100%">
 </p>
 
 ---
 
 ## Contents
 
-- [For players](#for-players)
+- [How it works](#how-it-works)
+- [Example: a portal home from the Nether](#example-a-portal-home-from-the-nether)
+- [Step-by-step guide](#step-by-step-guide)
   - [1. Craft an Eye of Rhumb](#1-craft-an-eye-of-rhumb)
   - [2. Make a Gunter's Igniter](#2-make-a-gunters-igniter)
-  - [3. Upgrade it (optional)](#3-upgrade-it-optional)
-  - [4. Set the destination](#4-set-the-destination)
+  - [3. Upgrade it (optional, but only now)](#3-upgrade-it-optional-but-only-now)
+  - [4. Mark the destination](#4-mark-the-destination)
   - [5. Build a frame and light it](#5-build-a-frame-and-light-it)
-  - [Tips and gotchas](#tips-and-gotchas)
+- [FAQ](#faq)
 - [For server admins](#for-server-admins)
 - [For contributors](#for-contributors)
 
 ---
 
-## For players
+## How it works
+
+Think of the **igniter** as a key to one place. First you choose the place, then you build portals
+that lead there.
+
+1. **Craft an Eye of Rhumb.** Eight Eyes of Ender around a grass block, netherrack or end stone. The
+   center block picks the **dimension your portal will lead to**: Overworld, Nether or End.
+2. **Make an igniter.** At an anvil, combine Flint and Steel with the Eye. Now you have an igniter for
+   that dimension.
+3. **Mark the destination.** Go to the exact spot where you want people to **come out**. Place a
+   cartography table there and right-click it with the igniter. The igniter now remembers that spot.
+4. **Light a portal.** Build a frame **anywhere, in any dimension**. Right-click inside it with the
+   igniter. Everyone who walks in comes out at the spot you marked.
+
+### Before you start
+
+> [!IMPORTANT]
+> - **Portals are one-way.** A portal sends you to the marked spot, but nothing brings you back. For
+>   a round trip, make **two igniters** and build a portal at each end.
+> - **A basic igniter lights only one portal**, then it breaks. Add a diamond (10 portals) or
+>   netherite (50 portals) at the anvil to light more.
+> - **Upgrade before you mark the destination.** Once an igniter has a destination it can't be
+>   changed or upgraded.
+> - **Mark the destination in the right dimension.** A Nether igniter only works on a cartography
+>   table in the Nether, and so on.
+> - **Portals last until the frame is broken.** Using up or losing the igniter doesn't affect
+>   portals it already lit.
+
+---
+
+## Example: a portal home from the Nether
+
+You have a base in the Overworld and you're exploring the Nether. You want a quick way home.
+
+1. Craft an **Overworld Eye of Rhumb** (8 Eyes of Ender + grass block), because home is in the
+   Overworld.
+2. At an anvil, combine **Flint and Steel + the Overworld Eye**. Add a diamond too if you want to
+   build more than one portal home.
+3. At your base, place a **cartography table** where you want to arrive and right-click it with the
+   igniter. The table disappears in a flash of lightning.
+4. In the Nether, build a frame and **right-click inside it** with the igniter. Step in and you're
+   home.
+
+To also travel *back* to the Nether, repeat the steps with a **Nether** Eye: mark a spot in the
+Nether, then light a second portal at your base.
+
+---
+
+## Step-by-step guide
 
 ### 1. Craft an Eye of Rhumb
 
-The Eye of Rhumb tells your portal which dimension it leads to. Surround a block from that dimension
-with eight Eyes of Ender on a crafting table:
+**Where:** any crafting table.
+
+Put **eight Eyes of Ender** around a center block. The center block decides which dimension your
+portals will lead **to**:
 
 <p align="center">
   <img src="docs/images/eye-recipe.svg" alt="Crafting grid: eight Eyes of Ender around a center block. Grass Block makes an Overworld eye, Netherrack a Nether eye, End Stone an End eye">
 </p>
 
-|   | Center block | You get                  | Your portal can lead to…   |
-| - | ------------ | ------------------------ | -------------------------- |
-| <img src="docs/images/items/grass_block.svg" width="32" alt="Grass Block"> | Grass Block  | Overworld Eye of Rhumb   | somewhere in the Overworld |
-| <img src="docs/images/items/netherrack.svg" width="32" alt="Netherrack"> | Netherrack   | Nether Eye of Rhumb      | somewhere in the Nether    |
-| <img src="docs/images/items/end_stone.svg" width="32" alt="End Stone"> | End Stone    | Eye of Rhumb's End       | somewhere in the End       |
+|   | Center block | You get                  | Portals will lead to… |
+| - | ------------ | ------------------------ | --------------------- |
+| <img src="docs/images/items/grass_block.svg" width="32" alt="Grass Block"> | Grass Block  | Overworld Eye of Rhumb   | the Overworld         |
+| <img src="docs/images/items/netherrack.svg" width="32" alt="Netherrack"> | Netherrack   | Nether Eye of Rhumb      | the Nether            |
+| <img src="docs/images/items/end_stone.svg" width="32" alt="End Stone"> | End Stone    | Eye of Rhumb's End       | the End               |
 
 ### 2. Make a Gunter's Igniter
 
-At an **anvil**, put a **Flint and Steel** in the left slot and your **Eye of Rhumb** in the right
-slot. The result is a glowing *Gunter's Igniter* attuned to that dimension. You can rename it in the
-anvil while you're there.
+**Where:** an anvil. **Cost:** 2 levels.
+
+Put a **Flint and Steel** in the left slot and your **Eye of Rhumb** in the right slot. You get a
+glowing *Gunter's Igniter* for that dimension. You can rename it while you're at the anvil.
 
 <p align="center">
   <img src="docs/images/anvil.svg" alt="Anvil: Flint and Steel plus an Eye of Rhumb makes a Gunter's Igniter, which shows as Unbound with 1 ignite remaining">
 </p>
 
-> 💡 Costs **2 levels** by default.
+Its tooltip says **Unbound**, which means it has no destination yet, and **1 ignite remaining**.
 
-### 3. Upgrade it (optional)
+### 3. Upgrade it (optional, but only now)
 
-Before you set a destination, you can upgrade the igniter at the anvil again. Put the igniter on the
-left and one of these on the right:
+**Where:** an anvil.
 
-|   | Add…              | What it does                                           | Default cost |
-| - | ----------------- | ------------------------------------------------------ | ------------ |
-| <img src="docs/images/items/diamond.svg" width="32" alt="Diamond"> | Diamond           | Igniter lights **10** portals instead of 1             | 5 levels     |
-| <img src="docs/images/items/netherite_ingot.svg" width="32" alt="Netherite Ingot"> | Netherite Ingot   | Igniter lights **50** portals (can follow a diamond)   | 15 levels    |
-| <img src="docs/images/items/dye.svg" width="32" alt="Dye"> | Any dye           | Tints the portal (add several for a multi-hued portal) | 2 levels     |
-| <img src="docs/images/items/redstone_block.svg" width="32" alt="Block of Redstone"> | Block of Redstone | Makes the portal redstone-controlled *(experimental)*  | 10 levels    |
+Put the igniter in the left slot and one of these in the right slot:
 
-> ⚠️ **Upgrade first!** Once you set a destination in the next step, the igniter is locked and
-> can't be upgraded any more.
+|   | Add…              | What it does                                           | Cost      |
+| - | ----------------- | ------------------------------------------------------ | --------- |
+| <img src="docs/images/items/diamond.svg" width="32" alt="Diamond"> | Diamond           | Lights **10** portals instead of 1                     | 5 levels  |
+| <img src="docs/images/items/netherite_ingot.svg" width="32" alt="Netherite Ingot"> | Netherite Ingot   | Lights **50** portals (works after a diamond, too)     | 15 levels |
+| <img src="docs/images/items/dye.svg" width="32" alt="Dye"> | Any dye           | Tints the portal (add several for a multi-hued portal) | 2 levels  |
+| <img src="docs/images/items/redstone_block.svg" width="32" alt="Block of Redstone"> | Block of Redstone | Makes the portal redstone-controlled *(experimental)*  | 10 levels |
 
-### 4. Set the destination
+> [!WARNING]
+> Upgrades only work while the igniter is still **Unbound**. Once you mark a destination in the next
+> step, the igniter can't be upgraded any more.
+
+### 4. Mark the destination
+
+**Where:** the exact spot where you want to **come out** of your portals. It must be in the igniter's
+dimension.
 
 <img src="docs/images/items/cartography_table.svg" width="32" alt="Cartography Table">
 
-Go to where you want the portal to **lead**. It has to be in the dimension the igniter is attuned to.
-Place a **Cartography Table** there and **right-click it with the igniter**.
+Place a **Cartography Table** and **right-click it with the igniter**. Lightning strikes ⚡, the table
+is used up, and the igniter's tooltip now shows the coordinates it's tied to.
 
-Lightning strikes ⚡, the table is used up, and the igniter now remembers that spot. Its tooltip
-shows the coordinates.
+This is permanent. An igniter can never be pointed at a different spot.
 
 ### 5. Build a frame and light it
 
-Back home, build a closed frame out of **any solid blocks**. **Right-click the inside edge of the
-frame** with the igniter and the opening fills with a portal.
+**Where:** anywhere, in any dimension. This is where you'll step **in**.
+
+Build a closed frame out of **any solid blocks**. It can be any shape, as long as the opening is
+fully enclosed and no bigger than 441 blocks (21 × 21). **Right-click the inside edge of the frame**
+with the igniter and the opening fills with a portal.
 
 <p align="center">
   <img src="docs/images/portal-frames.svg" alt="A standing stone-brick portal frame and a flat floor portal, both filled with a swirling purple portal">
 </p>
 
-- **Standing portals** (vertical) work like a nether portal: stand in one for about 2.5 seconds.
+- **Standing portals** (upright) work like a nether portal: stand in one for about 2.5 seconds.
 - **Floor portals** (flat) teleport you **instantly** when you step on them. Great for trapdoor drops!
-- Creative and spectator players always teleport instantly.
+- Creative and spectator players always teleport instantly, and don't use up igniter charges.
 
-The plugin looks for a safe place to land, so you won't arrive inside a wall.
+Each portal you light uses one charge. When the last one is used, the igniter breaks. The portals it
+made keep working.
 
-### Tips and gotchas
+---
 
-- A basic igniter has **one use** and breaks after lighting a portal. Add a diamond or netherite to
-  get more uses. Creative players don't use up charges.
-- Each portal leads **one way**. To get back, make a second igniter attuned to your starting point.
-- **Breaking the frame** removes the portal.
-- Right-clicking a cartography table with an igniter that already has a destination does nothing.
-  The destination is permanent.
+## FAQ
+
+**Can one igniter make several portals?**
+Yes, if you upgraded it with a diamond or netherite. Every portal it lights goes to the same spot, so
+you can have many entrances leading to one destination.
+
+**How do I get back?**
+Portals are one-way. Make a second igniter, mark a spot near your first portal, and light a portal at
+the far end.
+
+**Can I change where a portal goes?**
+No. Break the frame to remove the portal, then light a new one with a different igniter.
+
+**Will I land inside a wall?**
+It shouldn't. The plugin checks that the landing spot is safe before teleporting you.
+
+**Does it interfere with vanilla nether portals?**
+No. Vanilla nether portals won't link into or overwrite custom portals.
 
 ---
 
